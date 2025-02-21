@@ -1,0 +1,84 @@
+/* Remove default margin & set background */
+body {
+  margin: 0;
+  padding: 0;
+  background: #f8f9fa; /* Light gray background */
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Main container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Large Image Styling */
+.imgLarge {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: solid gray 1px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.imgLarge:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Small Image Container */
+.image-div {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* Small Images */
+.img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: solid gray 1px;
+  transition: transform 0.3s ease-in-out, border 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.img:hover {
+  transform: scale(1.1);
+  border: solid #007bff 2px;
+}
+
+/* Buttons */
+.btn-div {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.btn:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}
