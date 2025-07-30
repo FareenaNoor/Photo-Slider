@@ -3,7 +3,7 @@ import flowers1 from "./assets/flowers.jpg";
 import flower from "./assets/flowerss.png";
 import redflower from "./assets/redFlowers.jpg";
 import yellowflowers from "./assets/yellowflowers.jpg";
-import { useState, useRef} from "react";
+import { useState, useRef } from "react";
 
 function PhotoGallary() {
   const [flowers, setFlowers] = useState([
@@ -24,14 +24,24 @@ function PhotoGallary() {
   }
 
   function handleAdd(e) {
-        const file = e.target.files[0];
-        if (file) {
-          const imageUrl = URL.createObjectURL(file);
-          setFlowers([imageUrl, ...flowers]); // add image to start
-          setCurrentpic(0); // show new image
-        }
-      }
-  
+    const file = e.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setFlowers([imageUrl, ...flowers]);
+      setCurrentpic(0);
+    }
+  }
+
+  function handleFullScreen(e) {
+    const img = e.target;
+    if (img.requestFullscreen) {
+      img.requestFullscreen();
+    } else if (img.webkitRequestFullscreen) {
+      img.webkitRequestFullscreen(); // Safari
+    } else if (img.msRequestFullscreen) {
+      img.msRequestFullscreen(); // IE11
+    }
+  }
 
   const handlePrevious = () => {
     setCurrentpic(
@@ -47,6 +57,7 @@ function PhotoGallary() {
           alt="image not found"
           className="imgLarge"
           style={{ height: "400px", border: "solid gray 1px" }}
+          onClick={handleFullScreen}
         />
 
         <div className="image-div">
@@ -54,16 +65,19 @@ function PhotoGallary() {
             src={flowers[(currentpic + 1) % flowers.length]}
             alt="image not found"
             className="img"
+            onClick={handleFullScreen}
           />
           <img
             src={flowers[(currentpic + 2) % flowers.length]}
             alt="image not found"
             className="img"
+            onClick={handleFullScreen}
           />
           <img
             src={flowers[(currentpic + 3) % flowers.length]}
             alt="image not found"
             className="img"
+            onClick={handleFullScreen}
           />
         </div>
 
@@ -91,7 +105,7 @@ function PhotoGallary() {
             style={{ backgroundColor: "green" }}
             onMouseEnter={(e) => (e.target.style.backgroundColor = "darkgreen")}
             onMouseLeave={(e) => (e.target.style.backgroundColor = "green")}
-            onClick={() => fileInputRef.current.click()} 
+            onClick={() => fileInputRef.current.click()}
           >
             Add
             <input
